@@ -45,7 +45,12 @@ namespace SevenBoldPencil.ChangeVersionLabel
         [PatchPrefix]
         public static bool Prefix(LocalizedText __instance)
         {
-			if (__instance.gameObject.name == "AlphaLabel")
+			if (__instance == Plugin.VersionLabel)
+			{
+				__instance.method_2(Plugin.VersionLabelValue.Value);
+				return false;
+			}
+			if (!Plugin.VersionLabel && __instance.gameObject.name == "AlphaLabel")
 			{
 				Plugin.VersionLabel = __instance;
 				__instance.method_2(Plugin.VersionLabelValue.Value);
