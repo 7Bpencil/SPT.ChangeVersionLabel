@@ -27,19 +27,19 @@ namespace SevenBoldPencil.ChangeVersionLabel
 			{
 	            if (VersionLabel)
 	            {
-					VersionLabel.method_1();
+					VersionLabel.UpdateLocale();
 	            }
 			};
 
-			new Patch_LocalizedText_method_1().Enable();
+			new Patch_LocalizedText_UpdateLocale().Enable();
         }
     }
 
-    public class Patch_LocalizedText_method_1 : ModulePatch
+    public class Patch_LocalizedText_UpdateLocale : ModulePatch
     {
         protected override MethodBase GetTargetMethod()
         {
-            return AccessTools.Method(typeof(LocalizedText), nameof(LocalizedText.method_1));
+            return AccessTools.Method(typeof(LocalizedText), nameof(LocalizedText.UpdateLocale));
         }
 
         [PatchPrefix]
@@ -47,13 +47,13 @@ namespace SevenBoldPencil.ChangeVersionLabel
         {
 			if (__instance == Plugin.VersionLabel)
 			{
-				__instance.method_2(Plugin.VersionLabelValue.Value);
+				__instance.SetLabelText(Plugin.VersionLabelValue.Value);
 				return false;
 			}
 			if (!Plugin.VersionLabel && __instance.gameObject.name == "AlphaLabel")
 			{
 				Plugin.VersionLabel = __instance;
-				__instance.method_2(Plugin.VersionLabelValue.Value);
+				__instance.SetLabelText(Plugin.VersionLabelValue.Value);
 				return false;
 			}
 
