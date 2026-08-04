@@ -14,7 +14,7 @@ using SPT.Reflection.Patching;
 
 namespace SevenBoldPencil.ChangeVersionLabel
 {
-    [BepInPlugin("7Bpencil.ChangeVersionLabel", "7Bpencil.ChangeVersionLabel", "1.0.0")]
+    [BepInPlugin("7Bpencil.ChangeVersionLabel", "7Bpencil.ChangeVersionLabel", "1.1.0")]
     public class Plugin : BaseUnityPlugin
 	{
 		public static ConfigEntry<string> VersionLabelValue;
