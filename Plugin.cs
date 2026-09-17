@@ -7,20 +7,23 @@
 
 using BepInEx;
 using BepInEx.Configuration;
+using BepInEx.Unity.IL2CPP;
+using Il2CppInterop.Runtime.Injection;
+using Il2CppInterop.Runtime;
 using EFT.UI;
 using System.Reflection;
 using HarmonyLib;
-using SPT.Reflection.Patching;
+using SPTushonka.Reflection.Patching;
 
 namespace SevenBoldPencil.ChangeVersionLabel
 {
     [BepInPlugin("7Bpencil.ChangeVersionLabel", "7Bpencil.ChangeVersionLabel", "1.1.0")]
-    public class Plugin : BaseUnityPlugin
+    public class Plugin : BasePlugin
 	{
 		public static ConfigEntry<string> VersionLabelValue;
 		public static LocalizedText VersionLabel;
 
-        private void Awake()
+        public override void Load()
 		{
 			VersionLabelValue = Config.Bind<string>("Main", "Version Label Value", "Hello World!");
             VersionLabelValue.SettingChanged += (_, _) =>
